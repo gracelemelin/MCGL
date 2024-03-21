@@ -1,0 +1,35 @@
+[
+    {
+      "shop_id": "123",
+      "quantity": 5,
+      "title": "Handcrafted Wooden Bowl",
+      "description": "Beautifully carved wooden bowl made from sustainable acacia wood.",
+      "price": 25.99,
+      "who_made": "artisan",
+      "when_made": "2023",
+      "taxonomy_id": "456",
+      "image_ids": ["image1234", "image1235", "image1236"]
+    },
+    {
+      "shop_id": "456",
+      "quantity": 10,
+      "title": "Vintage Leather Messenger Bag",
+      "description": "Classic messenger bag made from genuine leather, featuring multiple compartments for organization.",
+      "price": 89.99,
+      "who_made": "artisan",
+      "when_made": "2022",
+      "taxonomy_id": "789",
+      "image_ids": ["image4567", "image4568", "image4569"]
+    },
+    {
+      "shop_id": "789",
+      "quantity": 3,
+      "title": "Handwoven Cotton Throw Blanket",
+      "description": "Soft and cozy cotton throw blanket handwoven by skilled artisans, perfect for adding warmth and style to any space.",
+      "price": 49.99,
+      "who_made": "artisan",
+      "when_made": "2024",
+      "taxonomy_id": "1011",
+      "image_ids": ["image7890", "image7891", "image7892"]
+    }
+  ]
