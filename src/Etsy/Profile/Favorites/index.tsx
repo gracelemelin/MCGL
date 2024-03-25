@@ -1,11 +1,12 @@
 import { useState } from "react"
 import LOListings from "../../BasicComp/LOListings"
 import db from "../../Database"
-function Favorites() {
-    const [favorites, setFavorites] = useState<any[]>(db.favorites)
+function Favorites({listings, favorites} : {listings: any[], favorites: any[]}) {
+    // const [favorites, setFavorites] = useState<any[]>(db.favorites)
+    
     return(
         <div>
-            <LOListings listings={favorites}/>
+            {/* <LOListings listings={favorites}/> */}
         </div>
     )
 }

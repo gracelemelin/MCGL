@@ -1,26 +1,35 @@
-import { useState } from "react";
-import LOListings from "../../LOListings";
+import React, { useState } from 'react';
+import { BiSearch } from "react-icons/bi"; // Import search icon
+import './index.css'; // Import CSS file for styling
 
-function SearchBar() {
-    const [searchInput, setSearchInput] = useState("");
-    const [listings, setListings] = useState<any[]>();
-    
-    const handleSearchChange = (e : any) => {
-        e.preventDefault();
-        setSearchInput(e.target.value);
-      };
-
-    const searchEtsy = () => {
-        // call api for listings
-        const list = {}
-        // <LOListings listings={list}/>
-    }
-
-    return(
-        <div>
-            <input id="bar" type="text" placeholder={"Search for anything"} onChange={handleSearchChange} value={searchInput}></input>
-            <button onClick={searchEtsy}>Enter</button>
-        </div>
-    )
+interface SearchBarProps {
+    onSearch: (searchTerm: string) => void; // Function to handle search
 }
-export default SearchBar
+
+// SearchBar component
+function SearchBar({ onSearch }: SearchBarProps) {
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const handleSearch = () => {
+    if (searchTerm.trim() !== "") {
+      onSearch(searchTerm.trim()); // Pass search term to parent component
+    }
+  };
+
+  return (
+    <div className="search-bar">
+      <input
+        type="text"
+        placeholder="Search..."
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        className="search-input"
+      />
+      <button onClick={handleSearch} className="search-btn">
+        <BiSearch />
+      </button>
+    </div>
+  );
+}
+
+export default SearchBar;

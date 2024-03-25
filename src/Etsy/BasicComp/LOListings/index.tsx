@@ -3,22 +3,30 @@ import { Link } from "react-router-dom";
 import { AiOutlineHeart } from "react-icons/ai";
 import { FaHeart } from "react-icons/fa";
 import { BsCart2 } from "react-icons/bs";
+import { FaShoppingCart } from "react-icons/fa";
 
 function LOListings({ listings, favorites }: { listings: any[], favorites: any[] }) {
-  // const [favorited, setFavorited] = useState(false)
-  // const addToFavorites = () => {
-  //     setFavorited(true)
-  // }
+  const [favorited, setFavorited] = useState(new Array(listings.length).fill(false));
+  const [cart, setCart] = useState(new Array(listings.length).fill(false));
 
-  const findingFavorites = () => {
-    listings.filter((listing) => listing.title === favorites.title)
-  }
+  const updateLiked = (index: any) => {
+    const updateLikedListings = [...favorited];
+    updateLikedListings[index] = !updateLikedListings[index];
+    setFavorited(updateLikedListings);
+  };
+
+  const updateCart = (index: any) => {
+    const updateCartListings = [...cart];
+    updateCartListings[index] = !updateCartListings[index];
+    setCart(updateCartListings);
+  };
 
   return (
     <div className="row">
       <div className="row row-cols-1 row-cols-md-5 g-4">
-        {listings.map((l: any) => (
-          <div className="col" style={{ width: 300 }}>
+        {listings.map((l: any, index) => (
+          <div key={l.title + l.shop_id} 
+          className="col" style={{ width: 300 }}>
             <div className="card">
               <img
                 src="/images/Etsy_logo.png"
@@ -39,10 +47,8 @@ function LOListings({ listings, favorites }: { listings: any[], favorites: any[]
                   {l.title}
                 </Link>
                 <br />
-                {/* <button icon={<img  alt="some img" src={favorited ? <AiOutlineHeart /> : <FaHeart />}/>}><AiOutlineHeart /></button> */}
-                <button>{}</button>
-                <AiOutlineHeart />
-                <BsCart2 />
+                <button onClick={() => updateLiked(index)}>{favorited[index] ? <FaHeart /> :  <AiOutlineHeart /> }</button>
+                <button onClick={() => updateCart(index)}>{cart[index] ? <FaShoppingCart /> :  <BsCart2/> }</button>
               </div>
             </div>
           </div>
