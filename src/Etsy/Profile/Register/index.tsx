@@ -5,9 +5,14 @@ import "./index.css"
 
 export default function Register() {
   const [user, setUser] = useState({
-    username: "johndoe",
-    password: "password",
-    email: "johndoe@neu.edu",
+      _id: "",
+      username: "",
+      password: "",
+      firstName: "",
+      lastName: "",
+      email: "",
+      do: "",
+      role: ""
   });
   const navigate = useNavigate();
   const register = async () => {

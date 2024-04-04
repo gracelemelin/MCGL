@@ -13,10 +13,15 @@ export default function Login() {
   const currentUser = useSelector((state: EtsyState) => state.UserReducer.user);
 
   const [user, setLoginUser] = useState({
+    _id: "",
     username: "",
     password: "",
+    firstName: "",
+    lastName: "",
     email: "",
-  });
+    do: "",
+    role: ""
+});
 
   const [errorMessage, setErrorMessage] = useState("");
   const [showPassword, setShowPassword] = useState(false); 

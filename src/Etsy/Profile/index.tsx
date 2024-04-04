@@ -2,12 +2,19 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import * as userClient from "./client";
 import './index.css'; 
+// import { EtsyState } from "../store";
+// import { useSelector } from "react-redux";
 
 export default function Profile() {
   const [user, setUser] = useState({
-    username: "johndoe",
-    password: "password",
-    email: "johndoe@neu.edu",
+      _id: "",
+      username: "",
+      password: "",
+      firstName: "",
+      lastName: "",
+      email: "",
+      do: "",
+      role: ""
   });
 
   const [newUsername, setNewUsername] = useState("");
@@ -51,16 +58,7 @@ export default function Profile() {
   
   const handleUpdateProfile = async () => {
     try {
-      await fetch("/api/users/profile", {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          username: newUsername,
-          email: newEmail,
-        }),
-      });
+      const update = await userClient.update(newUsername, newEmail);
       fetchProfile(); // Refresh profile data after update
       setEditMode(false); // Disable edit mode after update
       setUser({...user, username: newUsername, email : newEmail})

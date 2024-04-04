@@ -2,6 +2,9 @@ import axios from "axios";
 
 const axiosWithCredentials = axios.create({
   withCredentials: true,
+  headers: {
+    "Content-Type": "application/json",
+  },
 });
 
 // app.post("/api/users/register", register);
@@ -32,6 +35,25 @@ export const logout = async () => {
 export const profile = async () => {
   const response = await axiosWithCredentials.get(
     "http://localhost:4000/api/users/profile"
+  );
+  return response.data;
+};
+
+export const update = async (newUsername : any, newEmail : any) => {
+  const body = JSON.stringify({
+    username: newUsername,
+    email: newEmail,
+  })
+  const response = await axiosWithCredentials.put(
+    "http://localhost:4000/api/users/profile", body
+  );
+  return response.data;
+};
+
+export const profileother = async (userId : any) => {
+  console.log(String(userId))
+  const response = await axiosWithCredentials.get(
+    `http://localhost:4000/api/users/profile/${userId}`
   );
   return response.data;
 };

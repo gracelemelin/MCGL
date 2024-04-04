@@ -5,6 +5,7 @@ import { MdAccountCircle } from "react-icons/md";
 import { AiOutlineHeart } from "react-icons/ai";
 import { BsCart2 } from "react-icons/bs";
 import LOListings from '../LOListings';
+import { BiLogoEtsy } from "react-icons/bi";
 import db from '../../Database';
 import './index.css'; 
 import { useNavigate } from 'react-router-dom'; 
@@ -40,13 +41,20 @@ function SearchNav() {
         navigate("/cart");
     };
 
+    const goToHome = () => {
+      //Navigate to home page
+      navigate("/Home");
+    }
+
 
     return (
-        <nav className="navbar search-nav">
+        <nav className="navbar search-nav" style={{width: 500}}>
             <div className="navbar-container">
-                <div className="navbar-brand">Company Name</div>
+                <div className="navbar-brand"><BiLogoEtsy onClick={goToHome} /></div>
+                <div className='ms-1 me-1'>
                 <Categories />
-                <SearchBar onSearch={handleSearch} />
+                <SearchBar />
+                </div>
                 <div className="navbar-icons">
                     <AiOutlineHeart className="navbar-icon" onClick={goToFavorites} />
                     <MdAccountCircle className="navbar-icon" onClick={goToAccount} />
